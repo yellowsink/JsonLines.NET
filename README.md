@@ -117,7 +117,7 @@ var serialized = JsonLinesSerializer.Serialize(rawData);
 Output data:
 
 ```json
-{"name":"Thomas","age": 35, "DarkHair": true}
-{"name":"Jane","age":24,"DarkHair": true}
-{"name":"Kate","age":33,"DarkHair": false}
+{"name":"Thomas","age": 35,"DarkHair":true}
+{"name":"Jane","age":24,"DarkHair":true}
+{"name":"Kate","age":33,"DarkHair":false}
 ```
