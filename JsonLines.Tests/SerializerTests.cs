@@ -110,5 +110,21 @@ namespace JsonLines.Tests
 
 			Assert.AreEqual(expected, actual);
 		}
+
+		[Test]
+		public void SplitTest()
+		{
+			const string raw = "{\"Name\":\"Alice\",\"Age\":22,\"DarkHair\":true}\n{\"Name\":\"Bob\",\"Age\":36,\"DarkHair\":false}\n{\"Name\":\"Jim\",\"Age\":41,\"DarkHair\":false}";
+			var expected = new[]
+			{
+				"{\"Name\":\"Alice\",\"Age\":22,\"DarkHair\":true}",
+				"{\"Name\":\"Bob\",\"Age\":36,\"DarkHair\":false}",
+				"{\"Name\":\"Jim\",\"Age\":41,\"DarkHair\":false}"
+			};
+
+			var actual = JsonLinesSerializer.Split(raw);
+			
+			Assert.AreEqual(expected, actual);
+		}
 	}
 }
