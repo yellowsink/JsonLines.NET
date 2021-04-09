@@ -1,4 +1,7 @@
 # JSON Lines.NET
+
+[![buddy pipeline](https://app.buddy.works/cainy-a/jsonlines-net/pipelines/pipeline/320493/badge.svg?token=537b401f436f16f2fb7cc5edefd041f3aa593895b89e70cf2ca999b54ea0fdb8 "buddy pipeline")](https://app.buddy.works/cainy-a/jsonlines-net/pipelines/pipeline/320493)
+
 A library to work with the [JSON Lines](https://jsonlines.org/) format in .NET
 
 Licensed under `LGPL-3.0-or-later`.
@@ -16,13 +19,12 @@ TODO for future: rewrite with SimdJsonSharp because speed go brrr.
 
 ### `JsonLines.JsonLinesSerializer`
 
-| Name              | Params                                 | Returns    | Description                                                  |
-| ----------------- | -------------------------------------- | ---------- | ------------------------------------------------------------ |
-| `Split()`         | - `string jsonLines`                   | `string[]` | Splits JSON Lines data into individual JSON objects. Even though the JSON Lines spec requires one object per line, this supports pretty-printed files |
-| `Deserialize<>()` | - `Type T`<br/>- `string jsonLines`    | `T[]`      | Deserializes JSON Lines data to an array of the given type `T` |
-| `Deserialize()`   | - `string jsonLines`                   | `object[]` | Deserializes JSON Lines data to an array of objects          |
-| `Serialize<>()`   | - `Type T`<br/>- `IEnumerable<T> objs` | `string`   | Serializes a collection of a provided type into JSON Lines format |
-| `Serialize()`     | - `IEnumerable<object>`                | `string`   | Serializes a collection of objects into JSON Lines format    |
+| Name              | Params                              | Returns    | Description                                                  |
+| ----------------- | ----------------------------------- | ---------- | ------------------------------------------------------------ |
+| `Split()`         | - `string jsonLines`                | `string[]` | Splits JSON Lines data into individual JSON objects. Even though the JSON Lines spec requires one object per line, this supports pretty-printed files |
+| `Deserialize<>()` | - `Type T`<br/>- `string jsonLines` | `T[]`      | Deserializes JSON Lines data to an array of the given type `T` |
+| `Deserialize()`   | - `string jsonLines`                | `object[]` | Deserializes JSON Lines data to an array of objects          |
+| `Serialize()`     | - `IEnumerable<object>`             | `string`   | Serializes a collection of objects into JSON Lines format    |
 
 
 
@@ -33,9 +35,9 @@ TODO for future: rewrite with SimdJsonSharp because speed go brrr.
 Input data:
 
 ```json
-{"name": "Alice", "age": 22, "dark_hair": true}
-{"name": "Bob", "age": 36, "dark_hair": false}
-{"name": "Jim", "age": 41, "dark_hair": false}
+{"Name":"Alice","Age":22,"DarkHair":true}
+{"Name":"Bob","Age":36,"DarkHair":false}
+{"Name":"Jim","Age":41,"DarkHair":false}
 ```
 
 C# class to represent our data type:
@@ -72,7 +74,7 @@ Resulting data structure:
 - `[2]`
   - `Name == "Jim"`
   - `Age == 41`
-  - `DarkHair == true`
+  - `DarkHair == false`
 
 ### Serialization
 
@@ -109,13 +111,13 @@ C# code to serialize JSON Lines:
 ```cs
 using JsonLines;
 var rawData = new Person[] { /* create data structure here */ };
-var serialized = JsonLinesSerializer.Serialize<Person>(rawData);
+var serialized = JsonLinesSerializer.Serialize(rawData);
 ```
 
 Output data:
 
 ```json
-{"name": "Thomas", "age": 35, "dark_hair": true}
-{"name": "Jane", "age": 24, "dark_hair": true}
-{"name": "Kate", "age": 33, "dark_hair": false}
+{"name":"Thomas","age": 35, "DarkHair": true}
+{"name":"Jane","age":24,"DarkHair": true}
+{"name":"Kate","age":33,"DarkHair": false}
 ```

@@ -26,7 +26,7 @@ namespace JsonLines
 					_   => curlyBraceLevel
 				};
 
-				if (objects.Count > objectIndex + 1)
+				if (objects.Count > objectIndex)
 					objects[objectIndex].Append(c);
 				else
 					objects.Add(new StringBuilder(c.ToString()));
@@ -49,7 +49,7 @@ namespace JsonLines
 			var objects = new T[split.Length];
 
 			for (var i = 0; i < split.Length; i++)
-				objects[i] = JsonSerializer.Deserialize<T>(split[i]);
+				objects[i] = JsonSerializer.Deserialize<T>(Encoding.UTF8.GetBytes(split[i]));
 
 			return objects.ToArray();
 		}
@@ -62,28 +62,20 @@ namespace JsonLines
 		public static object[] Deserialize(string jsonLines) => Deserialize<object>(jsonLines);
 
 		/// <summary>
-		/// Serializes a collection of a provided type into JSON Lines format
+		/// Serializes a collection of a objects into JSON Lines format
 		/// </summary>
 		/// <param name="objs">A collection of objects</param>
-		/// <typeparam name="T">The type of the objects</typeparam>
 		/// <returns>JSON Lines data</returns>
-		public static string Serialize<T>(IEnumerable<T> objs)
+		public static string Serialize(IEnumerable<object> objs)
 		{
-			var objArray = objs as T[] ?? objs.ToArray();
+			var objArray = objs as object[] ?? objs.ToArray();
 
 			var jsonSnippets = new string[objArray.Length];
 
 			for (var i = 0; i < objArray.Length; i++)
-				jsonSnippets[i] = JsonSerializer.Serialize(objArray[i]).ToString();
+				jsonSnippets[i] = Encoding.UTF8.GetString(JsonSerializer.Serialize(objArray[i]));
 
 			return string.Join('\n', jsonSnippets);
 		}
-
-		/// <summary>
-		/// Serializes a collection of objects into JSON Lines format
-		/// </summary>
-		/// <param name="objs">A collection of objects</param>
-		/// <returns>JSON Lines data</returns>
-		public static string Serialize(IEnumerable<object> objs) => Serialize<object>(objs);
 	}
 }
