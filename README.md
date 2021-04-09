@@ -1,6 +1,7 @@
 # JSON Lines.NET
 
 [![buddy pipeline](https://app.buddy.works/cainy-a/jsonlines-net/pipelines/pipeline/320493/badge.svg?token=537b401f436f16f2fb7cc5edefd041f3aa593895b89e70cf2ca999b54ea0fdb8 "buddy pipeline")](https://app.buddy.works/cainy-a/jsonlines-net/pipelines/pipeline/320493)
+[![Nuget](https://img.shields.io/nuget/v/JsonLinesNet)](https://www.nuget.org/packages/JsonLinesNet/)
 
 A library to work with the [JSON Lines](https://jsonlines.org/) format in .NET
 
