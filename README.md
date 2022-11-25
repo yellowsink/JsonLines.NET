@@ -20,14 +20,12 @@ TODO for future: rewrite with SimdJsonSharp because speed go brrr.
 
 ### `JsonLines.JsonLinesSerializer`
 
-| Name              | Params                              | Returns    | Description                                                  |
-| ----------------- | ----------------------------------- | ---------- | ------------------------------------------------------------ |
+| Name              | Params                              | Returns    | Description                                                                                                                                           |
+|-------------------|-------------------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Split()`         | - `string jsonLines`                | `string[]` | Splits JSON Lines data into individual JSON objects. Even though the JSON Lines spec requires one object per line, this supports pretty-printed files |
-| `Deserialize<>()` | - `Type T`<br/>- `string jsonLines` | `T[]`      | Deserializes JSON Lines data to an array of the given type `T` |
-| `Deserialize()`   | - `string jsonLines`                | `object[]` | Deserializes JSON Lines data to an array of objects          |
-| `Serialize()`     | - `IEnumerable<object>`             | `string`   | Serializes a collection of objects into JSON Lines format    |
-
-
+| `Deserialize<>()` | - `Type T`<br/>- `string jsonLines` | `T[]`      | Deserializes JSON Lines data to an array of the given type `T`                                                                                        |
+| `Deserialize()`   | - `string jsonLines`                | `object[]` | Deserializes JSON Lines data to an array of objects                                                                                                   |
+| `Serialize()`     | - `IEnumerable<object>`             | `string`   | Serializes a collection of objects into JSON Lines format                                                                                             |
 
 ## Examples
 
